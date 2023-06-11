@@ -1,10 +1,10 @@
 import React from 'react'
 // import { Link } from 'react-router-dom'
-import Navbar from '../components/Navbar';
+// import Navbar from '../components/Navbar';
 export default function Home() {
     return (
         <>
-            <Navbar />
+            {/* <Navbar /> */}
             <main>
                 <h1>Home Page</h1>
                 {/* <Link to='/about'>About</Link>&nbsp;&nbsp;

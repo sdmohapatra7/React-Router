@@ -1,6 +1,6 @@
 // import {useState} from 'react';
-// import Navbar from './components/Navbar';
-import {createBrowserRouter,RouterProvider,createRoutesFromElements,Route} from 'react-router-dom';
+import Navbar from './components/Navbar';
+import { createBrowserRouter, RouterProvider, createRoutesFromElements, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
 import Items from './pages/Items';
@@ -23,18 +23,33 @@ function App() {
   // 2 . another way to create routes..
   //The createBrowserRouter takes an array of objects with path and element keys. The path key specifies the URL route, and the element key specifies the component to render at that specific route.
 
+  // const router = createBrowserRouter([
+  //   {path:'/', element: <Home />},
+  //   {path:'/about' , element: <About />},
+  //   {path:'/items', element: <Items />}
+  // ])
+
+  //using nested Routes navbar is the parent component and all of its child hence navbar show all the components
   const router = createBrowserRouter([
-    {path:'/', element: <Home />},
-    {path:'/about' , element: <About />},
-    {path:'/items', element: <Items />}
+    {
+      path: '/',
+      element: <Navbar />,
+      children: [
+        // either we write the path empty or we can write index as true to show the Component because of using same path
+        {index:true, element: <Home /> },
+        { path: '/about', element: <About /> },
+        { path: '/items', element: <Items /> }
+      ]
+    }
   ])
+
   return (
     <>
       {/* <Navbar setPage={setPage}/>
       {page === 'home' && <Home />}
       {page === 'about' && <About />}
       {page === 'items' && <Items />} */}
-      <RouterProvider router={router}/>
+      <RouterProvider router={router} />
     </>
   );
 }
