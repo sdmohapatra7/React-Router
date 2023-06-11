@@ -1,11 +1,19 @@
+import {useState} from 'react';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import About from './pages/About';
+import Items from './pages/Items';
 
-import './App.css';
 
 function App() {
+  const[page,setPage]=useState('home');
   return (
-    <div className="App">
-      
-    </div>
+    <>
+      <Navbar setPage={setPage}/>
+      {page === 'home' && <Home />}
+      {page === 'about' && <About />}
+      {page === 'items' && <Items />}
+    </>
   );
 }
 
