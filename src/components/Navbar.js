@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link,Outlet } from 'react-router-dom';
+import { Link,Outlet,NavLink } from 'react-router-dom';
 export default function Navbar() {
     return (
         <>
@@ -8,9 +8,15 @@ export default function Navbar() {
                 <h4 onClick={()=>setPage('about')}>ABOUT</h4>
                 <h4 onClick={()=>setPage('items')}>ITEMS</h4>
                  */}
-                <Link to='/'><h4>HOME</h4></Link>
-                <Link to='/about'><h4>ABOUT</h4></Link>
-                <Link to='/items'><h4>ITEMS</h4></Link>
+                <NavLink style={({isActive})=> isActive?{color:'blue'}:undefined} to='/'>
+                    <h4>HOME</h4>
+                </NavLink>
+                <NavLink style={({isActive})=> isActive?{color:'blue'}:undefined} to='about'>
+                    <h4>ABOUT</h4>
+                </NavLink>
+                <NavLink style={({isActive})=> isActive?{color:'blue'}:undefined} to='items'>
+                    <h4>ITEMS</h4>
+                </NavLink>
             </div>
             <Outlet />
         </>

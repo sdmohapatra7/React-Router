@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider, createRoutesFromElements, Route } 
 import Home from './pages/Home';
 import About from './pages/About';
 import Items from './pages/Items';
-
+import ItemDetails from './pages/ItemDetails';
 
 function App() {
   // const[page,setPage]=useState('home');
@@ -18,6 +18,17 @@ function App() {
   //   <Route path='/items' element={<Items />}/>
   //   </>
   // );
+  //if i want to write the nested route then...
+  // const routes = createRoutesFromElements(
+  //   <>
+  //     <Route path='/' element={<Navbar />}>
+  //       <Route path='/' element={<Home />} />
+  //       <Route path='/about' element={<About />} />
+  //       <Route path='/items' element={<Items />} />
+  //     </Route>
+  //   </>
+  // );
+
   // const router = createBrowserRouter(routes);
 
   // 2 . another way to create routes..
@@ -36,9 +47,14 @@ function App() {
       element: <Navbar />,
       children: [
         // either we write the path empty or we can write index as true to show the Component because of using same path
-        {index:true, element: <Home /> },
-        { path: '/about', element: <About /> },
-        { path: '/items', element: <Items /> }
+        { index: true, element: <Home /> },
+        { path: 'about', element: <About /> },
+        { path: 'items',
+        children:[
+          {index: true, element: <Items />},
+          {path:':id' , element:<ItemDetails />}
+        ]},
+        
       ]
     }
   ])
