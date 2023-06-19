@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Items from './pages/Items';
 import ItemDetails from './pages/ItemDetails';
+import ErroePage from './pages/ErroePage';
 
 function App() {
   // const[page,setPage]=useState('home');
@@ -45,6 +46,7 @@ function App() {
     {
       path: '/',
       element: <Navbar />,
+      errorElement : <ErroePage />,
       children: [
         // either we write the path empty or we can write index as true to show the Component because of using same path
         { index: true, element: <Home /> },
